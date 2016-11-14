@@ -49,25 +49,29 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
                 <TextBlock Text="Nombre:" Margin="12,8" VerticalAlignment="Center"/>
-                <TextBox Name="myName" Grid.Column="1" Margin="12,8" Text="{Binding Nombre, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Name="myName" Grid.Column="1" Margin="12,8" Text="{Binding Nombre, Mode=TwoWay, UpdateSourceTrigger=Explicit}"/>
 
                 <TextBlock Text="Apellidos:" Grid.Row="1" Margin="12,8" VerticalAlignment="Center"/>
-                <TextBox Name="mySurname" Grid.Row="1"  Grid.Column="1" Margin="12,8" Text="{Binding Apellidos, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Name="mySurname" Grid.Row="1"  Grid.Column="1" Margin="12,8" Text="{Binding Apellidos, Mode=TwoWay, UpdateSourceTrigger=Explicit}"/>
 
                 <TextBlock Text="Edad:" Grid.Row="2" Margin="12,8" VerticalAlignment="Center"/>
-                <TextBox Name="myAge" Grid.Row="2"  Grid.Column="1" Margin="12,8" Text="{Binding FechaNac, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Name="myAge" Grid.Row="2"  Grid.Column="1" Margin="12,8" Text="{Binding FechaNac, Mode=TwoWay, UpdateSourceTrigger=Explicit}"/>
 
                 <TextBlock Text="Teléfono:" Grid.Row="3" Margin="12,8" VerticalAlignment="Center"/>
-                <TextBox Name="myTlfn" Grid.Row="3"  Grid.Column="1" Margin="12,8" Text="{Binding Telefono, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Name="myTlfn" Grid.Row="3"  Grid.Column="1" Margin="12,8" Text="{Binding Telefono, Mode=TwoWay, UpdateSourceTrigger=Explicit}"/>
 
                 <StackPanel Orientation="Vertical" Grid.Row="4" Grid.ColumnSpan="2"> <!--ColumnSpan="2" permite que el textbox se expanda a lo largo de las dos columnas-->
                     <TextBlock Text="Dirección:" Margin="12,20,12,0" VerticalAlignment="Center"/>
-                    <TextBox Name="myAddress" Margin="12,0" Text="{Binding Direccion, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinHeight="200" TextWrapping="Wrap"/>
+                    <TextBox Name="myAddress" Margin="12,0" Text="{Binding Direccion, Mode=TwoWay, UpdateSourceTrigger=Explicit}" MinHeight="200" TextWrapping="Wrap"/>
                 </StackPanel>
-            
+
+                <!--Este botón actualiza la fuente del binding-->
+                <Button x:Name="btnSave" Click="saveChanges" Background="BurlyWood" Margin="12,20,12,0" Grid.Row="5" Grid.ColumnSpan="2">Guardar cambios</Button>
+
             </Grid>
         </StackPanel>
     

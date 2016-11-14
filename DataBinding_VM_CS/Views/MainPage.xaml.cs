@@ -26,5 +26,15 @@ namespace DataBinding_VM_CS
         {
             this.InitializeComponent();
         }
+
+        //Para que se guarden los cambios
+        private void saveChanges(object sender, RoutedEventArgs e)
+        {
+            this.myName.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            this.mySurname.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            this.myAge.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            this.myTlfn.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            this.myAddress.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+        }
     }
 }
