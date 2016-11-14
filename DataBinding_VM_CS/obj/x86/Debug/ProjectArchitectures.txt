@@ -1,0 +1,1 @@
+C:\Users\jmramirez\Documents\Visual Studio 2015\Projects\DataBinding_VM_CS\DataBinding_VM_CS\DataBinding_VM_CS.csproj;x86
