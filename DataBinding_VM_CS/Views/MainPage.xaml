@@ -14,14 +14,18 @@
     </Page.DataContext>
 
     <Grid Background="#AA6D39">
-        
+
+        <Grid.RowDefinitions>
+            <RowDefinition  Height="2*"/>
+            <RowDefinition Height="8*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition  Width="2*"/>
             <ColumnDefinition Width="8*"/>
         </Grid.ColumnDefinitions>
 
         <!--ListView-->
-        <ScrollViewer>
+        <ScrollViewer x:Name="scroll" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0">
             <ListView Background="#FFD1AA" x:Name="listadoPersonas" Margin="4" ItemsSource="{Binding listado}" SelectedItem="{Binding personaSeleccionada, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -35,7 +39,7 @@
         </ScrollViewer>
 
         <!--Formulario-->
-        <StackPanel Grid.Column="1">
+        <StackPanel x:Name="spFormulario" Grid.RowSpan="2" Grid.Column="1">
             <Grid DataContext="{Binding personaSeleccionada, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                 
                 <Grid.ColumnDefinitions>
@@ -52,7 +56,7 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Text="Nombre:" Margin="12,8" VerticalAlignment="Center"/>
+                <TextBlock Text="Nombre:" Grid.Row="0" Margin="12,8" VerticalAlignment="Center"/>
                 <TextBox Name="myName" Grid.Column="1" Margin="12,8" Text="{Binding Nombre, Mode=TwoWay, UpdateSourceTrigger=Explicit}"/>
 
                 <TextBlock Text="Apellidos:" Grid.Row="1" Margin="12,8" VerticalAlignment="Center"/>
@@ -74,6 +78,36 @@
 
             </Grid>
         </StackPanel>
+        
+        <!--Esto es para cuando se reduzca la pantalla (reposicionamos los elementos que queremos cambiar)-->
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="WindowStates">
+                
+                <VisualState x:Name="WideState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="800" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                    </VisualState.Setters>
+                </VisualState>
+                
+                <VisualState x:Name="NarrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="scroll.(Grid.Row)" Value="0" />
+                        <Setter Target="scroll.(Grid.Column)" Value="0" />
+                        <Setter Target="scroll.(Grid.RowSpan)" Value="1" />
+                        <Setter Target="scroll.(Grid.ColumnSpan)" Value="2" />
+                        <Setter Target="spFormulario.(Grid.Row)" Value="1" />
+                        <Setter Target="spFormulario.(Grid.Column)" Value="0" />
+                        <Setter Target="spFormulario.(Grid.ColumnSpan)" Value="2" />
+                    </VisualState.Setters>
+                </VisualState>
+            
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
     
     </Grid>
 </Page>
